@@ -27,3 +27,39 @@ function App() {
 }
 
 export default App;
+
+
+/*
+
+------------------------ One Accordion Open at a time -------------------------------
+
+import { useState } from "react";
+import Accordion from "./component/Accordion";
+import { AccordionData } from "../data";
+
+function App() {
+  const [activeAccordionId, setActiveAccordionId] = useState(null);
+
+  const toggleAccordion = (id) => {
+    setActiveAccordionId((prev) => (prev === id ? null : id));
+  };
+
+  return (
+    <>
+      {AccordionData.map((item) => (
+        <Accordion
+          key={item.id}
+          title={item.title}
+          description={item.description}
+          isOpen={activeAccordionId === item.id}
+          onToggle={() => toggleAccordion(item.id)}
+        />
+      ))}
+    </>
+  );
+}
+
+export default App;
+
+
+*/

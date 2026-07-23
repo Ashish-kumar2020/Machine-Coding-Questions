@@ -1,6 +1,7 @@
 import { ChevronDown, ChevronUp } from "lucide-react";
 
 const Accordion = ({ title, description, isOpen, onToggle }) => {
+    
   return (
     <div className="border border-black w-full  p-2 mt-4">
       <button

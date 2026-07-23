@@ -4,7 +4,7 @@ import { AccordianData } from "../data";
 import { useState } from "react";
 
 function App() {
-  const [openAccordions, setOpenAccordions] = useState([]);
+  const [openAccordions, setOpenAccordions] = useState(["accordian-1","accordian-3"]);
 
   const toggleAccordion = (id) => {
     setOpenAccordions((prev) =>
@@ -30,6 +30,7 @@ function App() {
           key={item.id}
           onToggle={() => toggleAccordion(item.id)}
           isOpen={openAccordions.includes(item.id)}
+         
         />
       ))}
     </>

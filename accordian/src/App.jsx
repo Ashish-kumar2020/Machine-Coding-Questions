@@ -4,10 +4,12 @@ import { AccordianData } from "../data";
 import { useState } from "react";
 
 function App() {
-  const [isAccordionActive, setIsAccordionActive] = useState(null);
+
+  const [openAccordions,setOpenAccordions] = useState([]);
+
 
   const toggleAccordion = (id) => {
-    setIsAccordionActive((prev) => (prev === id ? null : id));
+    setOpenAccordions((prev) => prev.includes(id) ? prev.filter((val) => val !== id) : [...prev,id]);
   };
   return (
     <>
@@ -17,7 +19,7 @@ function App() {
           description={item.description}
           key={item.id}
           onToggle={() => toggleAccordion(item.id)}
-          isOpen={isAccordionActive === item.id}
+          isOpen={openAccordions.includes(item.id) }
         />
       ))}
     </>

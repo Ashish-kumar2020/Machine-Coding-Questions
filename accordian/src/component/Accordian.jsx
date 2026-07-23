@@ -1,9 +1,6 @@
 import { ChevronDown, ChevronUp } from "lucide-react";
 
-
-const Accordion = ({ title, description,isOpen,onToggle }) => {
-
-
+const Accordion = ({ title, description, isOpen, onToggle }) => {
   return (
     <div className="border border-black w-full  p-2 mt-4">
       <button
@@ -15,7 +12,16 @@ const Accordion = ({ title, description,isOpen,onToggle }) => {
         {isOpen ? <ChevronUp /> : <ChevronDown />}
       </button>
 
-      {isOpen && <div className="mt-3">{description}</div>}
+      <div
+        className={`
+        overflow-hidden
+        transition-all
+        duration-1000
+        ${isOpen ? "max-h-96" : "max-h-0"}
+  `}
+      >
+        {description}
+      </div>
     </div>
   );
 };

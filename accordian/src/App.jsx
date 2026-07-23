@@ -13,16 +13,16 @@ function App() {
   };
 
   const expandAll = () => {
-    setOpenAccordions(AccordianData.map((val) => val.id))
+    setOpenAccordions(openAccordions.length === AccordianData.length ? [] :AccordianData.map((val) => val.id) )
   }
 
-  const collapseAll = () => {
-    setOpenAccordions([])
-  }
+  // const collapseAll = () => {
+  //   setOpenAccordions([])
+  // }
   return (
     <>
-      <button className="border border-black p-2 m-2" onClick={expandAll}>Expand All</button>
-      <button className="border border-black p-2 m-2" onClick={collapseAll}>Collapse All</button>
+      <button className="border border-black p-2 m-2" onClick={expandAll}>Toggle All</button>
+      {/* <button className="border border-black p-2 m-2" onClick={collapseAll}>Collapse All</button> */}
       {AccordianData.map((item) => (
         <Accordion
           title={item.title}
@@ -69,6 +69,49 @@ function App() {
 }
 
 export default App;
+
+
+--------------------- Multiple Accordion Open and CLose at a time ----------------
+  const toggleAccordion = (id) => {
+    setOpenAccordions((prev) =>
+      prev.includes(id) ? prev.filter((val) => val !== id) : [...prev, id],
+    );
+  };
+
+
+--------------------- Exapand All and Collapse All ---------------------
+function App() {
+  const [openAccordions, setOpenAccordions] = useState([]);
+
+  const toggleAccordion = (id) => {
+    setOpenAccordions((prev) =>
+      prev.includes(id) ? prev.filter((val) => val !== id) : [...prev, id],
+    );
+  };
+
+  const expandAll = () => {
+    setOpenAccordions(AccordianData.map((val) => val.id))
+  }
+
+  const collapseAll = () => {
+    setOpenAccordions([])
+  }
+  return (
+    <>
+      <button className="border border-black p-2 m-2" onClick={expandAll}>Expand All</button>
+      <button className="border border-black p-2 m-2" onClick={collapseAll}>Collapse All</button>
+      {AccordianData.map((item) => (
+        <Accordion
+          title={item.title}
+          description={item.description}
+          key={item.id}
+          onToggle={() => toggleAccordion(item.id)}
+          isOpen={openAccordions.includes(item.id)}
+        />
+      ))}
+    </>
+  );
+}
 
 
 */

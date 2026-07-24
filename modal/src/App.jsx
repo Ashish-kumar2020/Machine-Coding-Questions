@@ -1,9 +1,14 @@
 import "./App.css";
+import Modal from "./components/Modal";
 
 function App() {
   return (
     <>
-      <h1 className="text-3xl font-bold underline">Hello world!</h1>
+    <div className="flex flex-col justify-center items-center">
+      <h1 className="text-3xl  font-bold">Modal Machine Coding Question</h1>
+      <Modal/>
+
+    </div>
     </>
   );
 }

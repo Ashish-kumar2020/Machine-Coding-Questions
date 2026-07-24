@@ -1,20 +1,16 @@
-import { useState } from "react";
-// import Modal from "./Modal";
-import PortalModal from "./components/PortalModal";
+import "./App.css";
+import Modal from "./components/Modal";
+
 
 function App() {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
   return (
-    <div style={{ padding: "20px" }}>
-      <h1>React App Content</h1>
-      <button onClick={() => setIsModalOpen(true)}>Open Modal</button>
+    <>
+    <div className="flex flex-col justify-center items-center">
+      <h1 className="text-3xl  font-bold">Modal Machine Coding Question</h1>
+      <Modal/>
 
-      <PortalModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
-        <h2>Modal Header</h2>
-        <p>This entire component is successfully breaking out of the root layout!</p>
-      </PortalModal>
     </div>
+    </>
   );
 }
 

@@ -5,11 +5,16 @@ import TodoList from "./TodoList";
 
 const Todo = () => {
   const [todoItem,setTodoItem] = useState("");
-  const {createTodo,todos} = useContext(TodoContext)
- 
+  const [editedTodoId,setEditedTodoId] = useState(null)
+  const {createTodo,todos,editTodo} = useContext(TodoContext)
 
   const handleTodo = () => {
-    createTodo(todoItem);
+    if(editedTodoId){
+      editTodo(editedTodoId,todoItem);
+      setEditedTodoId(null);
+    }else{
+      createTodo(todoItem);
+    }
     setTodoItem("")
   }
 
@@ -21,7 +26,7 @@ const Todo = () => {
 
       {
           todos.map((val) => (
-            <TodoList item={val} key={val.id}/>
+            <TodoList item={val} key={val.id} setTodoItem={setTodoItem} setEditedTodoId={setEditedTodoId}/>
           ))
         
       }

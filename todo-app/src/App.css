@@ -1,0 +1,25 @@
+.todo-app { min-height: 100vh; padding: 56px 20px; background: #f7f4ee; color: #292523; }
+.todo-card { max-width: 680px; margin: 0 auto; padding: 42px; background: #fffdf9; border: 1px solid #e8e1d7; border-radius: 20px; box-shadow: 0 18px 45px rgba(55, 42, 27, .08); }
+.eyebrow { margin: 0 0 9px; color: #ad6847; font-size: .72rem; font-weight: 800; letter-spacing: .13em; }
+h1 { margin: 0; font-size: clamp(2rem, 6vw, 3.2rem); letter-spacing: -.06em; }
+.subtitle { margin: 8px 0 30px; color: #756e68; }
+.task-form { display: flex; gap: 10px; }
+.task-form input { min-width: 0; flex: 1; border: 1px solid #dcd3c8; border-radius: 10px; padding: 13px 14px; font: inherit; }
+button { border: 0; border-radius: 9px; cursor: pointer; font: inherit; font-weight: 700; }
+.task-form button { padding: 0 18px; background: #343d32; color: white; }
+.cancel-edit, .clear { margin-top: 10px; padding: 6px 0; background: none; color: #8a5140; font-size: .88rem; }
+.toolbar { display: flex; justify-content: space-between; align-items: center; gap: 16px; margin: 26px 0 12px; color: #756e68; font-size: .88rem; }
+.filters { display: flex; gap: 4px; }
+.filters button { padding: 6px 9px; background: none; color: #756e68; text-transform: capitalize; }
+.filters .selected { background: #ebe7dd; color: #292523; }
+.task-list { display: grid; gap: 8px; margin: 0; padding: 0; list-style: none; }
+.task { display: flex; align-items: center; justify-content: space-between; gap: 14px; padding: 13px 12px; border: 1px solid #eee8df; border-radius: 10px; }
+.task label { display: flex; align-items: center; min-width: 0; gap: 11px; cursor: pointer; }
+.task input { width: 17px; height: 17px; accent-color: #52604d; }
+.task span { overflow-wrap: anywhere; }
+.task.done span { color: #9a948d; text-decoration: line-through; }
+.task-actions { display: flex; gap: 6px; }
+.task-actions button { padding: 6px 8px; background: #f2eee7; color: #554e49; font-size: .78rem; }
+.task-actions .delete { color: #a34436; }
+.empty { margin: 28px 0 4px; color: #8d857d; text-align: center; }
+@media (max-width: 520px) { .todo-app { padding: 24px 12px; } .todo-card { padding: 26px 18px; } .toolbar { align-items: flex-start; flex-direction: column; } .task { align-items: flex-start; flex-direction: column; } .task-actions { align-self: flex-end; } }

@@ -1,0 +1,75 @@
+.mobile-app {
+  width: 100%;
+  min-height: 100vh;
+  background: #fff;
+}
+
+.app {
+  width: 100%;
+  max-width: 480px;
+  min-height: 100vh;
+  margin: 0 auto;
+}
+
+.horizontal-list {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    overflow-x: auto;
+    padding: 16px;
+}
+
+.story-item {
+    flex-shrink: 0;
+}
+
+.user-story-icon {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    object-fit: cover;
+    cursor: pointer;
+}
+
+
+.story-viewer {
+    position: fixed;
+    inset: 0;
+    background: black;
+    z-index: 100;
+}
+
+.story-viewer-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.close-button {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 101;
+   
+    font-size: 22px;
+    cursor: pointer;
+}
+
+.story-navigation {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 2;
+
+    font-size: 18px;
+    border: none;
+    cursor: pointer;
+}
+
+.story-navigation-left {
+    left: 50px;
+}
+
+.story-navigation-right {
+    right: 50px;
+}

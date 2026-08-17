@@ -1,0 +1,21 @@
+.default-button {
+    margin-left: 20px;
+    border-radius: 18px;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 4px;
+    cursor: pointer;
+    font-weight: 800;
+}
+
+.default-button:hover{
+    border: 2px solid red;
+    color: red;
+}
+
+.default-button.is-clicked{
+    background-color: red;
+    color: white;
+    border: red;
+}

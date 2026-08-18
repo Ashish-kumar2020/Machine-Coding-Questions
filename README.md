@@ -1,6 +1,3 @@
-# Machine-Coding-Questions
+# Machine-Coding-Questions in Javascript
 
-## Accordion
-## Modal
-## Tabs
-## Progress bar
+## Counter

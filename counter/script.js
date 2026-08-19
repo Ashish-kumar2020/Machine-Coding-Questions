@@ -20,6 +20,7 @@ counterContainer.addEventListener("click", (e) => {
   if (e.target.dataset.action === "reset") {
     counterValue = 0;
     renderValue();
+    return;
   }
   updateCounterValue(Number(e.target.value));
 });

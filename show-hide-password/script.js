@@ -2,15 +2,6 @@ console.log("Password Show Hide - Machine Coding Question");
 const userNameContainer = document.querySelector(".userName-container");
 const userPasswordContainer = document.querySelector(".userPassword-container");
 
-/*
- <label for="userName">UserName: </label>
-        <input id="userName" type="text" placeholder="Enter UserName..."/>
-
-        <label for="userPassword">Password: </label>
-        <input id="userPassword" type="password" placeholder="Enter UserPassword..."/>
-
-*/
-
 function createElements() {
   userNameContainer.innerHTML = `
         <label for="userName">UserName: </label>
@@ -19,10 +10,16 @@ function createElements() {
 
   userPasswordContainer.innerHTML = `
         <label for="userPassword">Password: </label>
+        <input id="userPassword" type="password" placeholder="Enter UserPassword..."/>
         <div class="password-wrapper" style="display: inline-flex; align-items: center;">
-            <input id="userPassword" type="password" placeholder="Enter UserPassword..."/>
-            <img id="togglePasswordClose" src="./assets/eye-slash-svgrepo-com.svg" alt="eye-close" style="cursor: pointer; margin-left: 8px; width: 24px; height: 24px; filter: invert(1);">
-            <img id="togglePasswordOpen" src="./assets/eye-svgrepo-com.svg" alt="eye-close" style="cursor: pointer; margin-left: 8px; width: 24px; height: 24px; filter: invert(1); display:none" >
+        <button
+            id="toggleButton"
+            type="button"
+            aria-label="Show Password"
+        >
+            <img src="./assets/eye-slash-svgrepo-com.svg"  alt="eye-close" style="cursor: pointer; margin-left: 8px; width: 24px; height: 24px; filter: invert(1);" >
+        </button> 
+        
         </div>
     `;
   togglePassword();
@@ -31,22 +28,20 @@ function createElements() {
 createElements();
 
 function togglePassword() {
-  let isEnable = false;
-  const passwordInput = document.getElementById("userPassword");
-  const togglePasswordSelectClose = document.getElementById(
-    "togglePasswordClose",
-  );
-  const togglePasswordSelectOpen =
-    document.getElementById("togglePasswordOpen");
-
-  togglePasswordSelectClose.addEventListener("click", () => {
-    passwordInput.type = "text";
-    togglePasswordSelectClose.style.display = "none";
-    togglePasswordSelectOpen.style.display = "block";
-  });
-  togglePasswordSelectOpen.addEventListener("click", () => {
-    passwordInput.type = "password";
-    togglePasswordSelectClose.style.display = "block";
-    togglePasswordSelectOpen.style.display = "none";
+  let passwordInput = document.getElementById("userPassword");
+  const passwordWrapper = document.querySelector(".password-wrapper");
+  let toggleButton = document.querySelector("#toggleButton");
+  const img = toggleButton.querySelector("img");
+  let isPasswordVisible = false;
+  passwordWrapper.addEventListener("click", (e) => {
+    isPasswordVisible = !isPasswordVisible;
+    toggleButton.setAttribute(
+      "aria-label",
+      isPasswordVisible ? "Hide Password" : "Show Password",
+    );
+    passwordInput.type = isPasswordVisible ? "text" : "password";
+    img.src = isPasswordVisible
+      ? "./assets/eye-svgrepo-com.svg"
+      : "./assets/eye-slash-svgrepo-com.svg";
   });
 }

@@ -1,17 +1,66 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Like Button</title>
-</head>
-<body>
+  </head>
+  <style>
+   
+    .likebutton:hover {
+      border: 2px solid red;
+      fill: red;
+      cursor: pointer;
+    }
+    .loader-icon{
+        display: none;
+    }
     
+   
+  </style>
+  <body>
     <section class="likeButton-container">
-        <button id="like-button" class="likebutton">
-            <img src="./heart.svg" alt="Heart-Icon"> Like
-        </button>
+      <button id="like-button" class="likebutton">
+        <svg width="50" height="50" id="loader-shape-icon" class="loader-icon" viewBox="0 0 50 50" xmlns="http://w3.org">
+       
+          <circle
+            cx="25"
+            cy="25"
+            r="20"
+            fill="none"
+            stroke="#e0e0e0"
+            stroke-width="5"
+          />
+
+        
+          <circle
+            cx="25"
+            cy="25"
+            r="20"
+            fill="none"
+            stroke="red"
+            stroke-width="5"
+            stroke-dasharray="31.4 125.6"
+            stroke-linecap="round"
+            transform="rotate(-90 25 25)"
+          />
+        </svg>
+
+        <svg
+          class="heart-icon"
+          id="heart-shape-icon"
+          viewBox="0 0 24 24"
+          width="24"
+          height="24"
+        >
+          <path
+            d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
+          />
+        </svg>
+        Like
+      </button>
+      <span id="liked"></span>
     </section>
     <script src="./script.js"></script>
-</body>
+  </body>
 </html>

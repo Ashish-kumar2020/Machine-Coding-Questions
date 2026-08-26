@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Show Hide Text</title>
+</head>
+<body>
+    <header>
+        <h2>Show Hide Text Machine Coding Question</h2>
+    </header>
+
+    <section>
+        <div>
+            <span id="text-container">
+               
+            </span>
+            <div>
+                <button type="button" id="toggle-button"></button>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        let toggleButton = document.getElementById("toggle-button");
+        let textContainer = document.getElementById("text-container");
+        let isTextVisible = true;
+        let fullText = "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eum, earum itaque eius ipsa modi dolore aut. Sequi necessitatibus non quo impedit obcaecati consequatur, corporis perferendis animi, porro corrupti cum. Delectus repudiandae recusandae incidunt saepe, veniam distinctio culpa aspernatur nam quidem non magnam nisi numquam dignissimos velit quibusdam unde eius voluptatum labore doloremque. Pariatur nisi, quo repellendus in quis error necessitatibus ipsam dolorem eius nam."
+        
+        let text = !isTextVisible ? fullText.substring(0,40) : fullText
+
+
+        function init(){
+            toggleButton.textContent = "Hide Text";
+            textContainer.textContent = text;
+        }
+
+        function showHideText(){
+           isTextVisible = !isTextVisible;
+            if(!isTextVisible){
+                 toggleButton.textContent = "Show Text";
+                textContainer.textContent =fullText.substring(0,40)+"..."
+            }else{
+                toggleButton.textContent = "Hide Text";
+                textContainer.textContent =fullText
+            }
+
+            //  textContainer.textContent = text;
+        }
+
+        toggleButton.addEventListener("click",() => {
+            showHideText();
+        })
+
+        init()
+    </script>
+</body>
+</html>

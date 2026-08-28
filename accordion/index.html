@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Accordion</title>
+  </head>
+
+  <style>
+    .accordion-title {
+      border: 1px solid black;
+      font-size: 20px;
+      font-weight: 900;
+      padding: 6px;
+      cursor: pointer;
+      width: 680px;
+      text-align: justify;
+      margin: 10px;
+    }
+    .active {
+      display: none;
+      /* display: block; */
+    }
+    .accordion-description {
+      padding: 4px 15px;
+
+      border: 1px solid black;
+
+      width: 670px;
+
+      max-height: 50px;
+
+      overflow: hidden;
+
+      transition: max-height 0.4s ease;
+    }
+  </style>
+  <body>
+    <div>
+      <h3>Accordion Machine Coding Question</h3>
+    </div>
+    <section>
+      <div class="accordion-container"></div>
+    </section>
+    <script type="module" src="./script.js"></script>
+  </body>
+</html>

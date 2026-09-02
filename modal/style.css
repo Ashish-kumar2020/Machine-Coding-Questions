@@ -1,0 +1,55 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+
+}
+
+.modal-parent-conatiner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#toggle-modal-btn {
+    cursor: pointer;
+}
+
+.modal-content-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+    transition: transform 1.4s cubic-bezier(0.175, 0.885, 0.32, 1.275),opacity 1.4s ease;
+}
+
+.modal-open {
+  overflow: hidden;
+}
+
+.openModal {
+    display: block;
+    z-index: 100;
+    border: 2px solid black;
+    width: 600px;
+    padding: 12px;
+    border-radius: 15px;
+    transform: scale(1);
+    transform: translate(0,0) scale(1);
+}
+
+.overlay{
+    width: 100vw;
+    border: 2px solid black;
+    height: 100vh;
+    background-color: rgba(39, 36, 36, 0.112);
+    display: block;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.child-container{
+    display: none;
+}

@@ -1,17 +1,29 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { mockData } from "../data/userData";
 import UserDisplay from "./UserDisplay";
 import type { User } from "../types";
 
 const DebounceSearch = () => {
   const [userName, setUserName] = useState<string>("");
-  const [filteredUserData,setFilteredUserData] = useState<User[]>(mockData)
-    const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
-            const value = e.target.value;
-            setUserName(value);
-            const filteredData = mockData.filter((data) => data.name.toLowerCase().includes(value.toLowerCase()));
-            setFilteredUserData(filteredData);
+  const [filteredUserData, setFilteredUserData] = useState<User[]>(mockData);
+
+  const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+    setUserName(value);
+  };
+
+  useEffect(() => {
+    const timerId = setTimeout(() => {
+      const filteredData = mockData.filter((data) =>
+        data.name.toLowerCase().includes(userName.toLowerCase()),
+      );
+      setFilteredUserData(filteredData);
+    }, 1000);
+
+    return () => {
+        clearTimeout(timerId)
     }
+  }, [userName]);
 
   return (
     <div>
@@ -29,7 +41,7 @@ const DebounceSearch = () => {
         <ul className="user-list">
           {filteredUserData.map((user) => (
             <li key={user.id} className="list-container">
-              <UserDisplay user={user}/>
+              <UserDisplay user={user} />
             </li>
           ))}
         </ul>

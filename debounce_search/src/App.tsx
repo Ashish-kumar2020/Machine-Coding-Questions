@@ -10,7 +10,9 @@ function App() {
         <h3>Debounce Search Machine Coding Question</h3>
       </div>
       <div>
+       
           <DebounceSearch/>
+       
       </div>
     </>
   )

@@ -1,24 +1,18 @@
 import { useEffect, useState } from "react";
-import type { User } from "../types";
-import { mockData } from "../data/userData";
 
+const useDebounce = <T>(value : T,delay: number) => {
+    const [debouncedValue, setDebouncedValue] = useState(value);
 
-const useDebounce = (userName: string) => {
-    const [filteredUserData,setFilteredUserData] = useState<User[]>([])
-     useEffect(() => {
+    useEffect(() => {
         const timerId = setTimeout(() => {
-          const filteredData = mockData.filter((data) =>
-            data.name.toLowerCase().includes(userName.toLowerCase()),
-          );
-          setFilteredUserData(filteredData);
-        }, 1000);
-    
-        return () => {
-            clearTimeout(timerId)
-        }
-      }, [userName]);
+            setDebouncedValue(value)
+        },delay);
 
-      return [filteredUserData];
+        return () => {
+            clearTimeout(timerId);
+        }
+    },[value,delay]);
+    return debouncedValue
 }
 
 export default useDebounce;

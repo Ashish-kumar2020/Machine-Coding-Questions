@@ -1,29 +1,21 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { mockData } from "../data/userData";
 import UserDisplay from "./UserDisplay";
-import type { User } from "../types";
+import useDebounce from "../hooks/useDebounce";
 
 const DebounceSearch = () => {
   const [userName, setUserName] = useState<string>("");
-  const [filteredUserData, setFilteredUserData] = useState<User[]>(mockData);
 
+  const debouncedUserName = useDebounce(userName, 1000);
+  
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
     setUserName(value);
   };
 
-  useEffect(() => {
-    const timerId = setTimeout(() => {
-      const filteredData = mockData.filter((data) =>
-        data.name.toLowerCase().includes(userName.toLowerCase()),
-      );
-      setFilteredUserData(filteredData);
-    }, 1000);
-
-    return () => {
-        clearTimeout(timerId)
-    }
-  }, [userName]);
+  const filteredUserData = mockData.filter((data) =>
+    data.name.toLowerCase().includes(debouncedUserName.toLowerCase()),
+  );
 
   return (
     <div>

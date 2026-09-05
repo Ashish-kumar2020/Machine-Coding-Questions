@@ -10,7 +10,6 @@ const OTP = ({ otpSize }: OTPProps) => {
 
   const handleOtpInput = (input: string, index: number) => {
     if (input !== "" && Number.isNaN(Number(input))) return;
-    console.log("dsjdj");
     const newArr = [...inputLength];
     newArr[index] = input.slice(-1);
     setInputLength(newArr);
@@ -20,11 +19,34 @@ const OTP = ({ otpSize }: OTPProps) => {
     }
   };
 
-  const handleKeyDown =  (e:React.KeyboardEvent<HTMLInputElement> ,index:number) => {
-    if(e.key === "Backspace" && !e.currentTarget.value && index > 0){
-      inputRefs.current[index-1]?.focus();
+  const handleKeyDown = (
+    e: React.KeyboardEvent<HTMLInputElement>,
+    index: number,
+  ) => {
+    if (e.key === "Backspace" && !e.currentTarget.value && index > 0) {
+      inputRefs.current[index - 1]?.focus();
     }
-  } 
+  };
+
+  const handlePaste = (
+    e: React.ClipboardEvent<HTMLInputElement>,
+    index: number,
+  ) => {
+    e.preventDefault();
+    const pastedValue = e.clipboardData.getData("text");
+    const splittedStr = pastedValue.split("");
+    const res = splittedStr.filter((ele) => ele >= "0" && ele <= "9");
+    const pasteArr = [...inputLength];
+    for(let i = 0;i < res.length;i++){
+     const targetIndex = index + i;
+     if(targetIndex < otpSize){
+      pasteArr[targetIndex] = res[i]
+     }
+    }
+    setInputLength(pasteArr)
+    console.log(pasteArr);
+  };
+  
   return (
     <>
       <div>
@@ -44,8 +66,9 @@ const OTP = ({ otpSize }: OTPProps) => {
               ref={(el) => {
                 inputRefs.current[index] = el;
               }}
-              onKeyDown={(e) => handleKeyDown(e,index)}
+              onKeyDown={(e) => handleKeyDown(e, index)}
               onChange={(e) => handleOtpInput(e.target.value, index)}
+              onPaste={(e) => handlePaste(e, index)}
             />
           );
         })}

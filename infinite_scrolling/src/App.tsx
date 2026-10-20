@@ -1,6 +1,7 @@
 
 import './App.css'
-import InfiniteScrolling from './component/InfiniteScrolling'
+import Scrolling from './component/Scrolling'
+// import InfiniteScrolling from './component/InfiniteScrolling'
 
 function App() {
 
@@ -8,7 +9,9 @@ function App() {
   return (
   <>
     <h3>Infinite Scrolling</h3>
-    <InfiniteScrolling/>
+    {/* <InfiniteScrolling/> */}
+    <Scrolling/>
+
   </>
   )
 }
